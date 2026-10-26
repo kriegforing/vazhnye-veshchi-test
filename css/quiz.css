@@ -1,0 +1,532 @@
+/* Блок теста */
+.quiz {
+  padding-top: 150px;
+  scroll-margin-top: 0;
+}
+
+/* Шкала прохождения */
+.progress {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin-bottom: 9px;
+}
+
+.progress__step {
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.progress__step::before {
+  content: '';
+  display: block;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--grey);
+  transition: background-color 0.3s;
+}
+
+.progress__step.is-done::before {
+  background: var(--peach-dim);
+}
+
+.progress__step.is-current::before {
+  background: var(--peach);
+}
+
+.progress__step:not(:disabled):not(.is-current):hover::before {
+  background: #8A8A8A;
+}
+
+.progress__step.is-done:not(.is-current):hover::before {
+  background: #B9A08C;
+}
+
+.progress__step:disabled {
+  cursor: default;
+}
+
+/* Сцена: две карточки одинакового размера */
+.stage {
+  --pair-h: 712px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 21px;
+  transition: opacity 0.3s ease;
+}
+
+.stage.is-fading {
+  opacity: 0;
+}
+
+/* Карточка: высота всегда как у самого длинного состояния, текст её не растягивает */
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: var(--pair-h);
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--brown);
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.card :focus-visible {
+  outline-color: var(--brown);
+}
+
+.card--question {
+  padding: 32px 30px 24px;
+}
+
+/* Ответ появляется после «дальше» */
+.card--answer {
+  transition: opacity 0.4s, transform 0.4s, visibility 0.4s;
+}
+
+.card--answer.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+/* При смене вопроса ответ прячется без своей анимации — стенка в этот момент уже погасла */
+.card--answer.no-anim {
+  transition: none;
+}
+
+/* Карточка для замеров высоты: та же ширина, высота по содержимому */
+.card--probe {
+  position: absolute;
+  top: 0;
+  left: -9999px;
+  height: auto;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.card__title {
+  font-family: var(--font-title);
+  font-size: 36px;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.card__title:focus {
+  outline: none;
+}
+
+.card__text {
+  max-width: 490px;
+  margin-top: 14px;
+}
+
+.card__ask {
+  margin: 48px 0 9px;
+  font-weight: 700;
+}
+
+.card__nav {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+/* Ползунок */
+.slider {
+  margin-top: 48px;
+}
+
+.slider__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.slider__label,
+.slider__value {
+  font-weight: 700;
+}
+
+.slider__value {
+  white-space: nowrap;
+}
+
+.slider__input {
+  --p: 0.25;
+  display: block;
+  width: 100%;
+  height: 28px;
+  margin: 6px 0 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.slider__input::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(to right, var(--track-fill) calc(14px + (100% - 28px) * var(--p)), var(--track) 0);
+}
+
+.slider__input::-webkit-slider-thumb {
+  width: 28px;
+  height: 28px;
+  margin-top: -11px;
+  border: 0;
+  background: url('../assets/icons/star-dark.svg') center / contain no-repeat;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.slider__input::-moz-range-track {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--track);
+}
+
+.slider__input::-moz-range-progress {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--track-fill);
+}
+
+.slider__input::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 0;
+  background: url('../assets/icons/star-dark.svg') center / contain no-repeat;
+}
+
+.slider__input:focus-visible {
+  outline-offset: 6px;
+  border-radius: 4px;
+}
+
+.slider__scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+}
+
+/* Варианты ответа */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  min-height: 52px;
+  padding: 11px 21px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--sand);
+  line-height: 1.3;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.option:not(:disabled):hover {
+  background: var(--sand-hover);
+}
+
+.option:disabled {
+  cursor: default;
+}
+
+.option[aria-pressed="true"] {
+  background: var(--sand-active);
+  font-weight: 700;
+}
+
+.option__note {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.375;
+}
+
+/* Варианты с фото */
+.options--cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.options--cards .option {
+  justify-content: flex-start;
+  padding: 10px 10px 14px;
+}
+
+.options--cards .photo {
+  aspect-ratio: 4 / 3;
+}
+
+.options--cards .option__text {
+  margin-top: 8px;
+  padding-inline: 4px;
+}
+
+.options--cards .option__note {
+  padding-inline: 4px;
+}
+
+/* Ответ */
+.answer__block {
+  padding: 32px 30px 30px;
+}
+
+.answer__title {
+  max-width: 420px;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.answer__title:focus {
+  outline: none;
+}
+
+.answer__text {
+  max-width: 490px;
+  margin-top: 14px;
+}
+
+.answer__stat {
+  padding: 28px 30px;
+  background: var(--sand);
+}
+
+.answer__value {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.answer__stat .answer__text {
+  margin-top: 8px;
+}
+
+.answer__block--extra {
+  padding-top: 34px;
+}
+
+.answer__actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  padding: 20px 30px 24px;
+}
+
+/* Результат */
+.result__label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.result__score {
+  margin-top: 16px;
+  font-weight: 700;
+}
+
+.result__stars {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.result__stars img {
+  opacity: 0.25;
+}
+
+.result__stars img.is-on {
+  opacity: 1;
+}
+
+.result__price {
+  margin-top: 20px;
+  padding: 16px 18px;
+  border-radius: 10px;
+  background: var(--sand);
+  font-size: 17px;
+}
+
+.result__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.noscript {
+  margin-top: 24px;
+  text-align: center;
+}
+
+/* Телефон */
+@media (max-width: 860px) {
+  .quiz {
+    padding-top: 88px;
+  }
+
+  .progress {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 5;
+    gap: 6px;
+    margin: 0 -16px 8px;
+    padding: 8px 16px 6px;
+    background: var(--black);
+  }
+
+  .progress__step {
+    height: 16px;
+  }
+
+  .progress__step::before {
+    height: 6px;
+  }
+
+  .stage {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .card {
+    font-size: 17px;
+    line-height: 1.42;
+  }
+
+  /* На телефоне у каждой карточки своя высота — по самому длинному состоянию */
+  .card--question {
+    height: var(--q-h, auto);
+    padding: 24px 20px 16px;
+  }
+
+  /* Ответ появляется под вопросом, поэтому его высота — по тексту */
+  .card--answer {
+    height: auto;
+    scroll-margin-top: 40px;
+  }
+
+  .stage.is-result .card {
+    height: auto;
+  }
+
+  .card--answer.is-hidden {
+    display: none;
+  }
+
+  .card--probe {
+    height: auto;
+  }
+
+  .card__title {
+    font-size: 28px;
+  }
+
+  .card__ask,
+  .slider {
+    margin-top: 32px;
+  }
+
+  .card__nav .link-button {
+    min-height: 44px;
+  }
+
+  .slider__scale {
+    font-size: 14px;
+  }
+
+  .option {
+    min-height: 48px;
+    padding: 11px 16px;
+  }
+
+  .options--cards {
+    gap: 8px;
+  }
+
+  .options--cards .option {
+    padding: 8px 8px 12px;
+  }
+
+  .option__note {
+    font-size: 14px;
+  }
+
+  .answer__block {
+    padding: 24px 20px;
+  }
+
+  .answer__title {
+    font-size: 22px;
+  }
+
+  .answer__stat {
+    padding: 20px;
+  }
+
+  .answer__value {
+    font-size: 28px;
+  }
+
+  .answer__block--extra {
+    padding-top: 24px;
+  }
+
+  .answer__actions {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 20px 20px;
+  }
+
+  .answer__actions .link-button--strong {
+    width: 100%;
+    min-height: 52px;
+    border-radius: 10px;
+    background: var(--sand-active);
+    font-weight: 600;
+  }
+
+  .result__price {
+    font-size: 15px;
+  }
+
+  .result__buttons {
+    flex-direction: column;
+  }
+}
+
+/* Без анимаций */
+@media (prefers-reduced-motion: reduce) {
+  .stage,
+  .card--answer,
+  .progress__step::before,
+  .option {
+    transition: none;
+  }
+}

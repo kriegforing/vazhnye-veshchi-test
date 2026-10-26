@@ -1,0 +1,328 @@
+/* Цвета и шрифты */
+:root {
+  --black: #0B0A0A;
+  --paper: #FBF6F3;
+  --sand: #F1EAE7;
+  --sand-hover: #EBE0DA;
+  --sand-active: #F0E0C8;
+  --track: #EEE7E3;
+  --track-fill: #DCC9AA;
+  --brown: #4B2A0C;
+  --brown-dim: #594A3D;
+  --muted: #D0C8C3;
+  --label: #B19577;
+  --peach: #F6D6BC;
+  --peach-dim: #8F7A6A;
+  --grey: #5F5F5F;
+  --star-grey: #666666;
+  --rule: #63574D;
+  --radius: 12px;
+  --font-title: 'Forum', Georgia, serif;
+  --font-text: 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+  color-scheme: dark;
+}
+
+/* Основа */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--black);
+  color: var(--paper);
+  font-family: var(--font-text);
+  font-size: 20px;
+  line-height: 1.35;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p,
+ol,
+ul,
+dl,
+dd,
+figure {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+p,
+dd {
+  text-wrap: pretty;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--peach);
+  outline-offset: 3px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+/* Контейнер: контент 1152 px, как в макете */
+.wrap {
+  max-width: 1252px;
+  margin-inline: auto;
+  padding-inline: 50px;
+}
+
+/* Логотип: звезда выходит за край, буквы стоят по линии текста */
+.logo {
+  display: inline-block;
+  margin-left: -27px;
+  text-decoration: none;
+}
+
+.logo img {
+  width: 435px;
+}
+
+.logo--small {
+  margin-left: 0;
+}
+
+.logo--small img {
+  width: 188px;
+}
+
+/* Заголовки разделов */
+.section-title {
+  font-family: var(--font-title);
+  font-size: 64px;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.section-lead {
+  max-width: 565px;
+  margin-top: 20px;
+}
+
+/* Кнопки */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--sand);
+  color: var(--brown);
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background: var(--sand-hover);
+}
+
+.button--primary,
+.button--primary:hover {
+  background: var(--brown);
+  color: var(--paper);
+}
+
+/* Кнопки-ссылки */
+.link-button {
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  font-size: 20px;
+  line-height: 1.35;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.link-button:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.link-button--muted {
+  color: var(--muted);
+}
+
+.link-button--muted:hover {
+  color: var(--brown);
+}
+
+.link-button--strong {
+  color: var(--brown);
+}
+
+/* Заглушка фото */
+.photo {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  overflow: hidden;
+  background: repeating-linear-gradient(135deg, #E9DFD9 0 2px, #F4EEEA 2px 14px);
+  color: var(--brown);
+}
+
+.photo img {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo__label {
+  margin: 8px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: rgba(251, 246, 243, 0.92);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+/* Шторка */
+.curtain {
+  position: absolute;
+  inset: 0;
+  background: #1B1D19 url('../assets/images/curtain.jpg') center top / cover no-repeat;
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.45);
+  will-change: transform;
+}
+
+/* Планшет */
+@media (max-width: 1100px) {
+  .wrap {
+    padding-inline: 32px;
+  }
+
+  .section-title {
+    font-size: 52px;
+  }
+
+  .logo {
+    margin-left: -21px;
+  }
+
+  .logo img {
+    width: 340px;
+  }
+
+  .logo--small {
+    margin-left: 0;
+  }
+
+  .logo--small img {
+    width: 188px;
+  }
+}
+
+/* Телефон */
+@media (max-width: 860px) {
+  body {
+    font-size: 17px;
+    line-height: 1.42;
+  }
+
+  .wrap {
+    padding-inline: 16px;
+  }
+
+  .section-title {
+    font-size: 40px;
+  }
+
+  .section-lead {
+    margin-top: 16px;
+  }
+
+  .logo {
+    margin-left: -16px;
+  }
+
+  .logo img {
+    width: 260px;
+  }
+
+  .logo--small {
+    margin-left: 0;
+  }
+
+  .logo--small img {
+    width: 160px;
+  }
+
+  .link-button {
+    font-size: 17px;
+  }
+}
+
+/* Без анимаций */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .button,
+  .link-button {
+    transition: none;
+  }
+}
