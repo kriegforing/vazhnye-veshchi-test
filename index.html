@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Вы&nbsp;бы купили свитер кумира?&nbsp;— Важные вещи</title>
+  <meta name="description" content="Почему так хочется иметь вещь селебрити и сколько разумно за неё платить. Тест из шести вопросов на основе настоящих исследований.">
+  <link rel="preload" href="assets/fonts/forum-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/images/photos/cover-dress.webp" as="image">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body>
+  <!-- Шапка -->
+  <header class="topbar wrap" id="top">
+    <a class="logo" href="#top">
+      <img src="assets/images/logo.svg" alt="Важные вещи" width="435" height="49">
+    </a>
+  </header>
+
+  <main>
+    <!-- Обложка -->
+    <section class="cover wrap" aria-labelledby="cover-title">
+      <div class="cover__text">
+        <h1 class="cover__title" id="cover-title">Вы&nbsp;бы купили свитер кумира?</h1>
+        <p class="cover__lead">Почему так хочется иметь вещь селебрити и&nbsp;сколько разумно за&nbsp;неё платить</p>
+      </div>
+
+      <figure class="cover__art">
+        <!-- Рама с фото: шторка считает размеры от неё, а не от всей фигуры с табличкой -->
+        <div class="cover__frame">
+          <img class="cover__img" src="assets/images/photos/cover-dress.webp" width="1138" height="1346" fetchpriority="high"
+            alt="Бордовое бархатное платье с открытой спиной на манекене, в золотой раме">
+          <!-- Шторка поднимается один раз после загрузки -->
+          <div class="cover__window" aria-hidden="true">
+            <div class="curtain curtain--rise"></div>
+          </div>
+        </div>
+        <!-- Музейная табличка: появляется после того, как поднялась шторка -->
+        <figcaption class="museum-label">
+          <span class="museum-label__title">Платье леди Дианы,</span>
+          которое она лично отдала на&nbsp;благотворительную продажу
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- Вступление -->
+    <section class="intro wrap" aria-label="Вступление">
+      <div class="intro__text">
+        <p>Признайтесь: вам хоть раз хотелось вещь человека, которым вы восхищаетесь? Не&nbsp;футболку с&nbsp;логотипом, а&nbsp;настоящую. Шарф, в&nbsp;котором он выходил на&nbsp;сцену. Кружку, из&nbsp;которой любимая ведущая пила кофе перед эфиром. Блокнот, где&nbsp;писатель набрасывал первые строчки.</p>
+        <p>С&nbsp;вами всё в&nbsp;порядке. Психологи давно изучают это желание и&nbsp;знают, откуда оно берётся. Сейчас проверим на&nbsp;вас. Шесть вопросов, правильных ответов нет. После каждого расскажем, как&nbsp;на&nbsp;тот&nbsp;же вопрос отвечали участники настоящих исследований.</p>
+      </div>
+
+      <div class="facts">
+        <div class="fact">
+          <p class="fact__value">38%</p>
+          <p class="fact__text">Если хотелось, вы не&nbsp;одни. Этим летом VK спросил жителей 17&nbsp;городов, купили&nbsp;бы они вещь известного человека. Столько ответили «да» или&nbsp;«скорее да».</p>
+        </div>
+        <div class="fact">
+          <p class="fact__value">19%</p>
+          <p class="fact__text">И&nbsp;всё&nbsp;же признаваться в&nbsp;этом неловко: кажется, что&nbsp;это <span class="nowrap">по-детски</span>. Столько россиян хоть раз смущались, покупая обычный товар с&nbsp;лицом знаменитости на&nbsp;упаковке.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Тест -->
+    <section class="quiz wrap" id="test" aria-label="Тест">
+      <!-- Шкала прохождения: по ней можно вернуться к любому открытому вопросу -->
+      <nav class="progress" id="progress" aria-label="Вопросы теста"></nav>
+
+      <div class="stage" id="stage">
+        <!-- Вопрос -->
+        <section class="card card--question" id="card" aria-labelledby="card-title"></section>
+        <!-- Ответ: появляется после кнопки «дальше» -->
+        <section class="card card--answer is-hidden" id="answer" aria-labelledby="answer-title"></section>
+      </div>
+
+      <p class="visually-hidden" id="announcer" aria-live="polite"></p>
+
+      <noscript>
+        <p class="noscript">Чтобы пройти тест, включите JavaScript в&nbsp;браузере.</p>
+      </noscript>
+    </section>
+
+    <!-- Шкала следа -->
+    <section class="scale wrap" aria-labelledby="scale-title">
+      <h2 class="section-title" id="scale-title">Шкала следа</h2>
+      <p class="section-lead">Из&nbsp;всех экспериментов следует простой вывод: чем&nbsp;дольше человек жил с&nbsp;вещью, тем больше в&nbsp;ней следа. Вот как&nbsp;это выглядит на&nbsp;практике и&nbsp;чем&nbsp;каждую ступень можно подтвердить.</p>
+
+      <div class="deck" id="deck">
+        <!-- Звёзды над карточками -->
+        <div class="deck__stars" aria-hidden="true">
+          <span class="deck__star" data-i="0" data-d="2" style="--i: 0"><svg viewBox="0 0 36 36"><path d="M17.0625 36C16.7187 33.9687 15.8125 31.7812 14.3437 29.4375C12.875 27.0625 10.7812 24.8594 8.0625 22.8281C5.375 20.7969 2.6875 19.5 0 18.9375V16.9687C2.65625 16.3437 5.20312 15.1875 7.64062 13.5C10.1094 11.7812 12.1719 9.71875 13.8281 7.3125C15.5156 4.84375 16.5937 2.40625 17.0625 0H19.0312C19.3125 1.5625 19.875 3.17187 20.7187 4.82812C21.5625 6.45312 22.6406 8.01562 23.9531 9.51562C25.2969 10.9844 26.7969 12.3125 28.4531 13.5C30.9219 15.25 33.4375 16.4062 36 16.9687V18.9375C34.2812 19.2812 32.5 19.9844 30.6562 21.0469C28.8437 22.1094 27.1562 23.375 25.5937 24.8437C24.0312 26.2812 22.75 27.7969 21.75 29.3906C20.2812 31.7344 19.375 33.9375 19.0312 36H17.0625Z"/></svg></span>
+          <span class="deck__star" data-i="1" data-d="1" style="--i: 1"><svg viewBox="0 0 36 36"><path d="M17.0625 36C16.7187 33.9687 15.8125 31.7812 14.3437 29.4375C12.875 27.0625 10.7812 24.8594 8.0625 22.8281C5.375 20.7969 2.6875 19.5 0 18.9375V16.9687C2.65625 16.3437 5.20312 15.1875 7.64062 13.5C10.1094 11.7812 12.1719 9.71875 13.8281 7.3125C15.5156 4.84375 16.5937 2.40625 17.0625 0H19.0312C19.3125 1.5625 19.875 3.17187 20.7187 4.82812C21.5625 6.45312 22.6406 8.01562 23.9531 9.51562C25.2969 10.9844 26.7969 12.3125 28.4531 13.5C30.9219 15.25 33.4375 16.4062 36 16.9687V18.9375C34.2812 19.2812 32.5 19.9844 30.6562 21.0469C28.8437 22.1094 27.1562 23.375 25.5937 24.8437C24.0312 26.2812 22.75 27.7969 21.75 29.3906C20.2812 31.7344 19.375 33.9375 19.0312 36H17.0625Z"/></svg></span>
+          <span class="deck__star" data-i="2" data-d="0" style="--i: 2"><svg viewBox="0 0 36 36"><path d="M17.0625 36C16.7187 33.9687 15.8125 31.7812 14.3437 29.4375C12.875 27.0625 10.7812 24.8594 8.0625 22.8281C5.375 20.7969 2.6875 19.5 0 18.9375V16.9687C2.65625 16.3437 5.20312 15.1875 7.64062 13.5C10.1094 11.7812 12.1719 9.71875 13.8281 7.3125C15.5156 4.84375 16.5937 2.40625 17.0625 0H19.0312C19.3125 1.5625 19.875 3.17187 20.7187 4.82812C21.5625 6.45312 22.6406 8.01562 23.9531 9.51562C25.2969 10.9844 26.7969 12.3125 28.4531 13.5C30.9219 15.25 33.4375 16.4062 36 16.9687V18.9375C34.2812 19.2812 32.5 19.9844 30.6562 21.0469C28.8437 22.1094 27.1562 23.375 25.5937 24.8437C24.0312 26.2812 22.75 27.7969 21.75 29.3906C20.2812 31.7344 19.375 33.9375 19.0312 36H17.0625Z"/></svg></span>
+          <span class="deck__star" data-i="3" data-d="1" style="--i: 3"><svg viewBox="0 0 36 36"><path d="M17.0625 36C16.7187 33.9687 15.8125 31.7812 14.3437 29.4375C12.875 27.0625 10.7812 24.8594 8.0625 22.8281C5.375 20.7969 2.6875 19.5 0 18.9375V16.9687C2.65625 16.3437 5.20312 15.1875 7.64062 13.5C10.1094 11.7812 12.1719 9.71875 13.8281 7.3125C15.5156 4.84375 16.5937 2.40625 17.0625 0H19.0312C19.3125 1.5625 19.875 3.17187 20.7187 4.82812C21.5625 6.45312 22.6406 8.01562 23.9531 9.51562C25.2969 10.9844 26.7969 12.3125 28.4531 13.5C30.9219 15.25 33.4375 16.4062 36 16.9687V18.9375C34.2812 19.2812 32.5 19.9844 30.6562 21.0469C28.8437 22.1094 27.1562 23.375 25.5937 24.8437C24.0312 26.2812 22.75 27.7969 21.75 29.3906C20.2812 31.7344 19.375 33.9375 19.0312 36H17.0625Z"/></svg></span>
+          <span class="deck__star" data-i="4" data-d="2" style="--i: 4"><svg viewBox="0 0 36 36"><path d="M17.0625 36C16.7187 33.9687 15.8125 31.7812 14.3437 29.4375C12.875 27.0625 10.7812 24.8594 8.0625 22.8281C5.375 20.7969 2.6875 19.5 0 18.9375V16.9687C2.65625 16.3437 5.20312 15.1875 7.64062 13.5C10.1094 11.7812 12.1719 9.71875 13.8281 7.3125C15.5156 4.84375 16.5937 2.40625 17.0625 0H19.0312C19.3125 1.5625 19.875 3.17187 20.7187 4.82812C21.5625 6.45312 22.6406 8.01562 23.9531 9.51562C25.2969 10.9844 26.7969 12.3125 28.4531 13.5C30.9219 15.25 33.4375 16.4062 36 16.9687V18.9375C34.2812 19.2812 32.5 19.9844 30.6562 21.0469C28.8437 22.1094 27.1562 23.375 25.5937 24.8437C24.0312 26.2812 22.75 27.7969 21.75 29.3906C20.2812 31.7344 19.375 33.9375 19.0312 36H17.0625Z"/></svg></span>
+        </div>
+
+        <!-- Карточки: при наведении карточка выходит вперёд и увеличивается -->
+        <ol class="deck__cards" aria-label="Пять ступеней следа">
+          <li class="step" data-i="0" data-d="2" style="--i: 0" tabindex="0">
+            <p class="step__num">Ступень 1</p>
+            <h3 class="step__name">Подписал<br>за&nbsp;секунды</h3>
+            <dl class="step__info">
+              <dt>Например</dt>
+              <dd>Автограф на&nbsp;встрече с&nbsp;поклонниками</dd>
+              <dt>Чем&nbsp;подтвердить</dt>
+              <dd>Фото или&nbsp;видео момента, когда ставят подпись</dd>
+            </dl>
+          </li>
+          <li class="step" data-i="1" data-d="1" style="--i: 1" tabindex="0">
+            <p class="step__num">Ступень 2</p>
+            <h3 class="step__name">Подержал<br>в&nbsp;руках</h3>
+            <dl class="step__info">
+              <dt>Например</dt>
+              <dd>Подарок со&nbsp;съёмок, реквизит</dd>
+              <dt>Чем&nbsp;подтвердить</dt>
+              <dd>Фото владельца с&nbsp;этой вещью и&nbsp;рассказ, откуда она</dd>
+            </dl>
+          </li>
+          <li class="step" data-i="2" data-d="0" style="--i: 2" tabindex="0">
+            <p class="step__num">Ступень 3</p>
+            <h3 class="step__name">Поль&shy;зо&shy;вал&shy;ся<br>иногда</h3>
+            <dl class="step__info">
+              <dt>Например</dt>
+              <dd>Сценический костюм, вещь с&nbsp;одного события</dd>
+              <dt>Чем&nbsp;подтвердить</dt>
+              <dd>Фото или&nbsp;видео с&nbsp;события, где&nbsp;видна именно эта вещь</dd>
+            </dl>
+          </li>
+          <li class="step" data-i="3" data-d="1" style="--i: 3" tabindex="0">
+            <p class="step__num">Ступень 4</p>
+            <h3 class="step__name">Поль&shy;зо&shy;вал&shy;ся<br>постоянно</h3>
+            <dl class="step__info">
+              <dt>Например</dt>
+              <dd>Любимая куртка, кружка на&nbsp;рабочем столе</dd>
+              <dt>Чем&nbsp;подтвердить</dt>
+              <dd>Несколько фото в&nbsp;разное время и&nbsp;история от&nbsp;первого лица</dd>
+            </dl>
+          </li>
+          <li class="step" data-i="4" data-d="2" style="--i: 4" tabindex="0">
+            <p class="step__num">Ступень 5</p>
+            <h3 class="step__name">Прожил<br>с&nbsp;ней годы</h3>
+            <dl class="step__info">
+              <dt>Например</dt>
+              <dd>Вещь, связанная с&nbsp;важным периодом жизни</dd>
+              <dt>Чем&nbsp;подтвердить</dt>
+              <dd>Рассказ владельца, видео передачи, совпадающие детали: затяжки, пятна, потёртости</dd>
+            </dl>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Как важны детали -->
+    <section class="proof wrap" aria-labelledby="proof-title">
+      <img class="proof__img" src="assets/images/photos/guitar.webp" width="1032" height="828" loading="lazy"
+        alt="Дека акустической гитары крупным планом в овальной золотой раме">
+
+      <div class="proof__text">
+        <h2 class="section-title" id="proof-title">Как&nbsp;важны детали</h2>
+        <p>Гитара, с&nbsp;которой Боб Дилан вышел на&nbsp;сцену в&nbsp;1965&nbsp;году, почти полвека хранилась в&nbsp;чужой семье. Чтобы убедиться, что&nbsp;это она, эксперты сравнили рисунок древесины со&nbsp;старыми фотографиями. У&nbsp;каждой гитары он свой.</p>
+        <p class="rule">Цена должна расти вместе со&nbsp;ступенью,<br> а&nbsp;историю вещи лучше всех расскажет сам владелец</p>
+      </div>
+    </section>
+
+    <!-- Ценность вещи -->
+    <section class="value wrap" aria-labelledby="value-title">
+      <div class="value__card">
+        <img class="value__img" src="assets/images/photos/passport.webp" width="946" height="1170" loading="lazy"
+          alt="Паспорт Виктора Цоя поверх писем и записок, в золотой раме">
+
+        <div class="value__text">
+          <h2 class="section-title value__title" id="value-title">Ценность вещи в&nbsp;следе человека</h2>
+          <p>И&nbsp;здесь начинаются сложности. В&nbsp;2018&nbsp;году паспорт Виктора Цоя продали на&nbsp;аукционе за&nbsp;9&nbsp;миллионов рублей, хотя торги начинались с&nbsp;2,5&nbsp;миллиона. Подлинность документа проверили по&nbsp;запросу в&nbsp;МВД. И&nbsp;всё равно отец музыканта назвал эту историю «чистым блефом».</p>
+          <p>Когда историю пересказывают другие, сомнения остаются даже после экспертизы. Надёжнее всего, когда вещь подтверждает сам владелец: рассказывает, как&nbsp;с&nbsp;ней жил, и&nbsp;передаёт её из&nbsp;рук в&nbsp;руки на&nbsp;камеру.</p>
+        </div>
+      </div>
+    </section>
+
+    <p class="closing wrap">А&nbsp;свитер мы стирать не&nbsp;будем.</p>
+
+    <!-- Источники: свёрнуты, раскрываются по клику -->
+    <details class="sources wrap">
+      <summary class="sources__toggle">Источники</summary>
+      <div class="sources__grid">
+        <div>
+          <h3 class="sources__group">Исследования</h3>
+          <ul class="sources__list">
+            <li>Свитер знаменитости и&nbsp;стерилизация, Newman, Diesendruck, Bloom, 2011: <a href="https://www.sciencedaily.com/releases/2011/02/110214163112.htm" target="_blank" rel="noopener">ScienceDaily</a> · <a href="https://www.Gwern.net/doc/psychology/collecting/2011-newman.pdf" target="_blank" rel="noopener">полный текст</a></li>
+            <li>Перепроверка исследования 2011&nbsp;года: <a href="https://rr.peercommunityin.org/articles/rec?id=791" target="_blank" rel="noopener">Peer Community in Registered Reports</a></li>
+            <li>Дети и&nbsp;«копировальная машина», Hood, Bloom, 2008: <a href="https://bristol.ac.uk/news/2007/5335.html" target="_blank" rel="noopener">Бристольский университет</a> · <a href="https://research-information.bris.ac.uk/en/publications/children-prefer-certain-individuals-over-perfect-duplicates/" target="_blank" rel="noopener">публикация</a></li>
+            <li>Ранние номера тиража и&nbsp;«Белый альбом», Smith, Newman, Dhar: <a href="https://experts.illinois.edu/en/publications/closer-to-the-creator-temporal-contagion-explains-the-preference-/" target="_blank" rel="noopener">публикация</a> · <a href="https://som.yale.edu/blog/what-s-in-number" target="_blank" rel="noopener">Yale School of Management</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="sources__group">Опросы</h3>
+          <ul class="sources__list">
+            <li>38% готовы купить вещь известного человека, опрос VK: <a href="https://new-retail.ru/novosti/retail/25_rossiyan_gotovy_pokupat_odezhdu_na_reseyl_ploshchadkakh_opros_vk/" target="_blank" rel="noopener">New Retail</a></li>
+            <li>19% было неловко купить товар со&nbsp;знаменитостью, опрос «Анкетолога»: <a href="https://adindex.ru/news/tendencies/2026/09/7/348688.phtml" target="_blank" rel="noopener">AdIndex</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="sources__group">Истории</h3>
+          <ul class="sources__list">
+            <li>Кардиган Курта Кобейна: <a href="https://www.thefader.com/2019/10/27/kurt-cobain-mtv-unlplugged-cardigan-auction" target="_blank" rel="noopener">The Fader</a> · <a href="https://www.tbsnews.net/node/19755" target="_blank" rel="noopener">AFP через&nbsp;TBS News</a></li>
+            <li>Базары в&nbsp;Ялте и&nbsp;воспоминания Анны Вырубовой: <a href="https://www.romanovempire.org/media/romanovs-the-white-flower-day-in-livadia-yalta-59a52d" target="_blank" rel="noopener">Romanov Empire</a></li>
+            <li>Гитара Боба Дилана и&nbsp;рисунок древесины: <a href="https://www.hollywoodreporter.com/music/music-news/bob-dylans-newport-folk-festival-663365/" target="_blank" rel="noopener">Hollywood Reporter</a></li>
+            <li>Машинные подписи: <a href="https://www.cardboardconnection.com/guide-collecting-autographed-presidential/amp" target="_blank" rel="noopener">Cardboard Connection</a></li>
+            <li>Паспорт Виктора Цоя: <a href="https://www.kp.ru/daily/27016.4/4078249/" target="_blank" rel="noopener">«Комсомольская правда»</a> · <a href="https://www.mk.ru/culture/2018/09/26/pasport-i-zapisnaya-knizhka-viktora-coya-prodany-za-milliony-rubley.html" target="_blank" rel="noopener">«Московский комсомолец»</a></li>
+          </ul>
+        </div>
+      </div>
+    </details>
+  </main>
+
+  <!-- Подвал -->
+  <footer class="footer wrap">
+    <div class="footer__rule" aria-hidden="true">
+      <span class="footer__line"></span>
+      <img src="assets/icons/ornament.svg" alt="" width="112" height="22">
+      <span class="footer__line"></span>
+    </div>
+    <div class="footer__row">
+      <a class="logo logo--small" href="#top">
+        <img src="assets/images/logo.svg" alt="Важные вещи — наверх" width="188" height="21">
+      </a>
+      <p class="footer__note">Кардисс· © 2026 · 18+</p>
+    </div>
+  </footer>
+
+  <script src="js/questions.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/scale.js"></script>
+</body>
+</html>

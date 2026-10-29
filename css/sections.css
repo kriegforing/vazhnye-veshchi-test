@@ -1,0 +1,703 @@
+/* Шапка: логотип крупный, с воздухом сверху и снизу */
+.topbar {
+  padding-top: 80px;
+  line-height: 0;
+}
+
+/* Обложка */
+.cover {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 21px;
+  align-items: start;
+  padding-top: 140px;
+}
+
+.cover__text {
+  padding-top: 6px;
+}
+
+.cover__title {
+  font-family: var(--font-title);
+  font-size: var(--fs-accent);
+  line-height: var(--lh-accent);
+  text-transform: uppercase;
+}
+
+.cover__lead {
+  max-width: 440px;
+  margin-top: 28px;
+}
+
+.cover__art {
+  position: relative;
+  max-width: 569px;
+}
+
+.cover__frame {
+  position: relative;
+}
+
+.cover__img {
+  width: 100%;
+}
+
+/* Окно рамки: шторка закрывает только фото, рама остаётся видна */
+.cover__window {
+  position: absolute;
+  left: 20.74%;
+  top: 17.24%;
+  width: 60.11%;
+  height: 67.01%;
+  overflow: hidden;
+}
+
+.curtain--rise {
+  animation: curtain-rise 1.8s cubic-bezier(0.7, 0, 0.3, 1) 0.6s both;
+}
+
+/* Музейная табличка под рамой */
+.museum-label {
+  width: 300px;
+  margin: 20px 0 0 auto;
+  padding: 14px 16px 16px;
+  border-radius: 4px;
+  background: var(--paper);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+  color: var(--brown);
+  font-size: var(--fs-small);
+  line-height: 1.4;
+  animation: label-in 0.6s ease 2.3s both;
+}
+
+.museum-label__title {
+  display: block;
+  font-weight: 700;
+}
+
+@keyframes label-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes curtain-rise {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(calc(-100% - 40px));
+  }
+}
+
+/* Вступление */
+.intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 21px;
+  align-items: start;
+  padding-top: 156px;
+}
+
+.intro__text p {
+  max-width: 530px;
+  text-wrap: wrap;
+}
+
+.intro__text p + p {
+  margin-top: 24px;
+}
+
+.facts {
+  display: grid;
+  gap: 16px;
+}
+
+.fact {
+  padding: 26px 30px 30px;
+  border: 2px solid var(--paper);
+  border-radius: var(--radius);
+}
+
+/* Цифры — акцентным шрифтом */
+.fact__value {
+  font-family: var(--font-title);
+  font-size: var(--fs-accent);
+  line-height: 1;
+}
+
+.fact__text {
+  max-width: 470px;
+  margin-top: 16px;
+}
+
+/* Шкала следа */
+.scale {
+  padding-top: 150px;
+}
+
+.deck {
+  --w: 34%;
+  margin-top: 52px;
+}
+
+.deck__stars {
+  position: relative;
+  height: 80px;
+}
+
+.deck__star {
+  position: absolute;
+  top: 50%;
+  left: calc((100% - var(--w)) / 4 * var(--i) + var(--w) / 2);
+  width: 34px;
+  height: 34px;
+  color: var(--star-grey);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: width 0.35s, height 0.35s, color 0.35s;
+}
+
+.deck__star svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+/* Звезда растёт вместе со своей карточкой */
+.deck__star[data-d="1"] {
+  width: 50px;
+  height: 50px;
+}
+
+.deck__star[data-d="0"] {
+  width: 76px;
+  height: 76px;
+  color: var(--peach);
+}
+
+.deck.is-zoom .deck__star[data-d="0"] {
+  width: 84px;
+  height: 84px;
+}
+
+/* Карточки лежат веером в одной ячейке сетки, высота — по самой длинной */
+.deck__cards {
+  position: relative;
+  display: grid;
+  margin-top: 44px;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  position: relative;
+  z-index: 1;
+  grid-area: 1 / 1;
+  width: var(--w);
+  min-height: 466px;
+  margin-left: calc((100% - var(--w)) / 4 * var(--i));
+  padding: 30px 24px 32px;
+  border-radius: var(--radius);
+  background: #939190;
+  color: var(--brown-dim);
+  cursor: pointer;
+  transition: background-color 0.35s, color 0.35s, transform 0.35s, box-shadow 0.35s;
+}
+
+.step[data-d="1"] {
+  z-index: 2;
+  background: #AAA8A6;
+}
+
+.step[data-d="0"] {
+  z-index: 3;
+  background: var(--paper);
+  color: var(--brown);
+  cursor: default;
+}
+
+/* Увеличение при наведении */
+.deck.is-zoom .step[data-d="0"] {
+  transform: scale(1.05);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+}
+
+.step:focus-visible {
+  outline-color: var(--peach);
+  outline-offset: 4px;
+}
+
+.step__num {
+  color: #8C8075;
+  font-size: var(--fs-small);
+  transition: color 0.35s;
+}
+
+.step__name {
+  min-height: 2.2em;
+  margin-top: 14px;
+  font-family: var(--font-title);
+  font-size: var(--fs-accent);
+  line-height: var(--lh-accent);
+  text-transform: uppercase;
+}
+
+.step__info {
+  margin-top: 40px;
+}
+
+.step__info dt {
+  color: #8C8075;
+  font-size: var(--fs-small);
+  transition: color 0.35s;
+}
+
+.step__info dd {
+  max-width: 312px;
+  margin-top: 6px;
+  line-height: 1.375;
+}
+
+.step__info dd + dt {
+  margin-top: 18px;
+}
+
+.step[data-d="0"] .step__num,
+.step[data-d="0"] dt {
+  color: var(--label);
+}
+
+/* Как важны детали */
+.proof {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 21px;
+  align-items: center;
+  padding-top: 150px;
+}
+
+.proof__img {
+  width: 516px;
+}
+
+.proof__text p {
+  margin-top: 14px;
+}
+
+.proof__text .rule {
+  margin-top: 40px;
+  padding: 13px 24px 13px 16px;
+  border: 2px solid var(--paper);
+  border-radius: var(--radius);
+}
+
+/* Ценность вещи */
+.value {
+  padding-top: 157px;
+}
+
+.value__card {
+  display: grid;
+  grid-template-columns: 473px 1fr;
+  column-gap: 38px;
+  align-items: start;
+  padding: 40px 40px 28px;
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--brown);
+}
+
+.value__img {
+  width: 100%;
+}
+
+.value__title {
+  margin: -4px 0 26px;
+}
+
+.value__text p + p {
+  margin-top: 18px;
+}
+
+/* Финальная фраза */
+.closing {
+  padding-top: 240px;
+  padding-bottom: 240px;
+  font-family: var(--font-title);
+  font-size: var(--fs-accent);
+  line-height: var(--lh-accent);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Источники */
+.sources {
+  margin-bottom: 40px;
+  color: #B8ADA5;
+  font-size: var(--fs-small);
+  line-height: 1.5;
+}
+
+.sources__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #8C8075;
+  list-style: none;
+  cursor: pointer;
+}
+
+.sources__toggle::-webkit-details-marker {
+  display: none;
+}
+
+.sources__toggle::after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s;
+}
+
+.sources[open] .sources__toggle::after {
+  transform: translateY(2px) rotate(-135deg);
+}
+
+.sources__toggle:hover {
+  color: var(--paper);
+}
+
+.sources__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  padding-top: 20px;
+}
+
+.sources__group {
+  margin-bottom: 8px;
+  color: var(--paper);
+  font-family: var(--font-text);
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+
+.sources__list {
+  display: grid;
+  gap: 8px;
+  padding-left: 16px;
+}
+
+.sources a {
+  color: var(--paper);
+  text-underline-offset: 2px;
+}
+
+/* Подвал */
+.footer {
+  padding-bottom: 110px;
+}
+
+.footer__rule {
+  display: flex;
+  align-items: center;
+}
+
+.footer__line {
+  position: relative;
+  flex: 1;
+  height: 2px;
+  background: var(--rule);
+}
+
+/* Капли на концах линии */
+.footer__line::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--peach);
+  transform: translateY(-50%);
+}
+
+.footer__line:first-child::before {
+  left: 0;
+}
+
+.footer__line:last-child::before {
+  right: 0;
+}
+
+.footer__rule img {
+  width: 112px;
+  margin-inline: -2px;
+}
+
+.footer__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.footer__note {
+  color: var(--muted);
+  font-size: var(--fs-small);
+  line-height: 1.35;
+  text-align: right;
+}
+
+/* Планшет */
+@media (max-width: 1100px) {
+  .topbar {
+    padding-top: 56px;
+  }
+
+  .cover {
+    padding-top: 100px;
+  }
+
+  .cover__lead {
+    margin-top: 24px;
+  }
+
+  .intro,
+  .scale,
+  .proof {
+    padding-top: 120px;
+  }
+
+  .value {
+    padding-top: 120px;
+  }
+
+  .value__card {
+    grid-template-columns: 40% 1fr;
+    column-gap: 28px;
+    padding: 32px;
+  }
+
+  .closing {
+    padding-block: 180px;
+  }
+}
+
+/* Телефон */
+@media (max-width: 860px) {
+  .topbar {
+    padding-top: 32px;
+  }
+
+  .cover {
+    grid-template-columns: 1fr;
+    padding-top: 56px;
+  }
+
+  .cover__text {
+    padding-top: 0;
+  }
+
+  .cover__lead {
+    margin-top: 16px;
+  }
+
+  .cover__art {
+    width: 100%;
+    max-width: 440px;
+    margin: 32px auto 0;
+  }
+
+  .museum-label {
+    width: auto;
+    max-width: 320px;
+    margin: 16px 0 0;
+  }
+
+  .intro {
+    grid-template-columns: 1fr;
+    padding-top: 88px;
+  }
+
+  .intro__text p + p {
+    margin-top: 16px;
+  }
+
+  .facts {
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .fact {
+    padding: 20px 22px 22px;
+  }
+
+  .fact__text {
+    margin-top: 12px;
+  }
+
+  .scale {
+    padding-top: 88px;
+  }
+
+  .deck {
+    margin-top: 28px;
+  }
+
+  /* Звёзды становятся индикатором карусели */
+  .deck__stars {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    height: 48px;
+  }
+
+  .deck__star {
+    position: static;
+    width: 16px;
+    height: 16px;
+    transform: none;
+  }
+
+  .deck__star[data-d="1"] {
+    width: 24px;
+    height: 24px;
+  }
+
+  .deck__star[data-d="0"],
+  .deck.is-zoom .deck__star[data-d="0"] {
+    width: 38px;
+    height: 38px;
+  }
+
+  /* Карусель с прокруткой пальцем */
+  .deck__cards {
+    display: flex;
+    gap: 12px;
+    margin: 16px -16px 0;
+    padding: 8px 7% 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .deck__cards::-webkit-scrollbar {
+    display: none;
+  }
+
+  .step {
+    flex: 0 0 86%;
+    width: auto;
+    min-height: 0;
+    margin-left: 0;
+    padding: 24px 20px 26px;
+    scroll-snap-align: center;
+    transform: scale(0.94);
+  }
+
+  .step[data-d="0"] {
+    transform: none;
+  }
+
+  .deck.is-zoom .step[data-d="0"] {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .step__name {
+    margin-top: 10px;
+  }
+
+  .step__info {
+    margin-top: 24px;
+  }
+
+  .proof {
+    grid-template-columns: 1fr;
+    padding-top: 88px;
+  }
+
+  .proof__img {
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto 24px;
+  }
+
+  .proof__text .rule {
+    margin-top: 24px;
+    padding: 14px 18px;
+  }
+
+  .proof__text .rule br {
+    display: none;
+  }
+
+  .value {
+    padding-top: 88px;
+  }
+
+  .value__card {
+    grid-template-columns: 1fr;
+    padding: 20px 20px 24px;
+  }
+
+  .value__img {
+    max-width: 380px;
+    margin: 0 auto 24px;
+  }
+
+  .value__title {
+    margin: 0 0 16px;
+  }
+
+  .closing {
+    padding-block: 120px;
+  }
+
+  .sources__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .footer {
+    padding-bottom: 56px;
+  }
+
+  .footer__rule img {
+    width: 84px;
+  }
+}
+
+/* Без анимаций */
+@media (prefers-reduced-motion: reduce) {
+  .curtain--rise {
+    animation: none;
+    transform: translateY(calc(-100% - 40px));
+  }
+
+  .museum-label {
+    animation: none;
+  }
+
+  .deck__star,
+  .step,
+  .step__num,
+  .step__info dt,
+  .sources__toggle::after {
+    transition: none;
+  }
+}
